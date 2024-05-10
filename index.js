@@ -1,18 +1,16 @@
-const http = require('http');
+const express = require('express');
+const path = require('path');
+
+const app = express();
+
+app.use(express.static('public'));
+
+app.get("/", (req, res) => {
+    // res.json({message: "Hello Express"});
+    res.sendFile(path.resolve('pages/index.html'));
+})
 
 
-const server = http.createServer(async (req, res) => {
-    if (req.url === '/' && req.method === 'GET') {
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        res.write(JSON.stringify({"message": "hello"}));
-        res.end();
-        return
-    }
-
-    res.writeHead(404, {'Content-Type': 'application/json'});
-    res.end(JSON.stringify({"message": "Not Found"}));
-});
-
-server.listen(3002, () => {
-    console.log('Server started on port 3002')
-});
+app.listen(3002, () => {
+    console.log("Server started on port 3002");
+})
