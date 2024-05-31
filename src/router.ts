@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {createProduct, deleteProduct, getProduct, getProducts} from "./handlers/products";
+import {createProduct, deleteProduct, getProduct, getProducts, updateProduct} from "./handlers/products";
 import {body} from "express-validator";
 import {handleInputErrors} from "./modules/middleware";
 
@@ -12,7 +12,11 @@ router.post(
     body('name').isString(),
     handleInputErrors,
     createProduct);
-router.put('/products/:id', () => {});
+router.put(
+    '/products/:id',
+    body('name').isString(),
+    handleInputErrors,
+    updateProduct);
 router.delete('/products/:id', deleteProduct);
 
 
