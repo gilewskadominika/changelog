@@ -59,7 +59,9 @@ export const updateProduct = async (req, res) => {
                 belongsToId: req.user.id
             }
         },
-        data: req.body
+        data: {
+            name: req.body.name
+        }
     });
 
     res.json({data: updatedProduct})
