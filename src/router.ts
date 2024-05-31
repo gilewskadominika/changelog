@@ -1,11 +1,11 @@
-import { Router } from 'express';
-import {getProducts} from "./handlers/products";
+import {Router} from 'express';
+import {createProduct, getProduct, getProducts} from "./handlers/products";
 
 const router = Router();
 
 router.get('/products', getProducts);
-router.get('/products/:id', () => {});
-router.post('/products', () => {});
+router.get('/products/:id', getProduct);
+router.post('/products', createProduct);
 router.put('/products/:id', () => {});
 router.delete('/products/:id', () => {});
 
