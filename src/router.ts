@@ -1,11 +1,9 @@
 import { Router } from 'express';
+import {getProducts} from "./handlers/products";
 
 const router = Router();
 
-router.get('/products', (req: any, res) => {
-    console.log('Trafiony');
-    res.json({message: 'heh'});
-});
+router.get('/products', getProducts);
 router.get('/products/:id', () => {});
 router.post('/products', () => {});
 router.put('/products/:id', () => {});
